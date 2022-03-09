@@ -23,7 +23,7 @@ function Gear(props) {
       <div>
         <h1>{gear.name}</h1>
         <img className="PhotosBooBoo" src={gear.image} alt=""/>
-        <a href={gear.git}>
+        <a href={gear.image}>
           <button>Github</button>
         </a>
         <a href={gear.live}>
