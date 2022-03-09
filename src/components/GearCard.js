@@ -7,3 +7,6 @@ const GearCard = () => {
 }
 
 export default GearCard
+
+//Layout of page will take place in Components
+//css will do all styling

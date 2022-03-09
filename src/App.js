@@ -14,7 +14,7 @@ import NavBar from "./components/NavBar";
 
 function App() {
   // URL should have YOUR HEROKU URL for your backend, make sure you include the trailing slash
-  // const URL = "https://localhost:4000";
+  const URL = "https://localhost:4000";
 
   return (
     <div className="App">

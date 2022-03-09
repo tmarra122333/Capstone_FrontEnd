@@ -1,6 +1,10 @@
 .App {
   text-align: center;
+  background-color: rgb(7, 0, 1);
+  color: #ee86cb;
+  font-family: sans-serif;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +39,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.PhotosBooBoo {
+  width: 600px;
+  height: 400px;
+  outline: red solid 5px;
 }
