@@ -1,39 +1,74 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import {Link} from "react-router-dom"
 
 function Gear(props) {
-  // create state to hold projects
-  const [gear, setGear] = useState(null);
+    // state to hold formData
+    const [newForm, setNewForm] = useState({
+        name: "",
+        image: "",
+        description: "",
+    });
 
-  //create function to make api call
-  const getGearData = async () => {
-    //make api call and get response
-    const response = await fetch(props.URL + "gear");
-    // turn response into javascript object
-    const data = await response.json();
-    // set the projects state to the data
-    setGear(data);
-  };
+    // handleChange function for form
+    const handleChange = (event) => {
+        console.log(event.target);
+        setNewForm({ ...newForm, [event.target.name]: event.target.value });
+    };
 
-  // make an initial call for the data inside a useEffect, so it only happens once on component load
-  useEffect(() => getGearData());
+    // handle submit function for form
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        props.createGear(newForm);
+        setNewForm({
+            name: "",
+            image: "",
+            description: "",
+        });
+    };
 
-  // define a function that will return the JSX needed once we get the data
-  const loaded = () => {
-    return gear.map((project) => (
-      <div>
-        <h1>{gear.name}</h1>
-        <img className="PhotosBooBoo" src={gear.image} alt=""/>
-        <a href={gear.image}>
-          <button>Github</button>
-        </a>
-        <a href={gear.live}>
-          <button>live site</button>
-        </a>
-      </div>
-    ));
-  };
+    // loaded function
+    const loaded = () => {
+        return props.gear.map((gear) => (
+            <div key={gear._id} className="gear">
+                <Link to={`/gear/${gear._id}`}><h1>{gear.name}</h1></Link>
+                <img src={gear.image} alt={gear.name} />
+                <h3>{gear.title}</h3>
+            </div>
+        ));
+    };
 
-  return gear ? loaded() : <h1>Loading...</h1>;
+    const loading = () => {
+        return <h1>Loading...</h1>;
+    };
+    return (
+        <section>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={newForm.name}
+                    name="name"
+                    placeholder="name"
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    value={newForm.image}
+                    name="image"
+                    placeholder="image URL"
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    value={newForm.title}
+                    name="title"
+                    placeholder="A cool title"
+                    onChange={handleChange}
+                />
+                <input type="submit" value="Create Gear" />
+            </form>
+            {props.gear ? loaded() : loading()}
+        </section>
+    );
 }
 
 export default Gear;
