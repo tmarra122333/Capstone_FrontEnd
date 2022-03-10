@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Route, Switch } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import Gear from "../pages/gear"
 
 
@@ -53,7 +53,7 @@ function Main(props) {
 
     return (
         <main>
-            <Switch>
+            <Routes>
                 <Route exact path="/">
                     <Gear gear={gear} createGear={createGear} />
                 </Route>
@@ -68,7 +68,7 @@ function Main(props) {
                         />
                     )}
                 />
-            </Switch>
+            </Routes>
         </main>
     )
 }
