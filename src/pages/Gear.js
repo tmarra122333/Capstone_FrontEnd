@@ -1,23 +1,25 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 
-const Gear = (props) => {
+const Gears = (props) => {
   // create state to hold projects
-  const [gear, setGear] = useState([]);
+  const [gears, setGears] = useState([]);
 
-  //create function to make api call
-  const getGearData = async () => {
-    const response = await fetch(props.URL);
+  const URL = "http://localhost:4000/";
+  const getGearsData = async () => {
+    const response = await fetch(URL + "gear");
+    console.log(response)
     const data = await response.json();
-    setGear(data);
+    setGears(data);
   };
 
   // make an initial call for the data inside a useEffect, so it only happens once on component load
-  useEffect(() => { getGearData()}, []);
+  useEffect(() => { getGearsData()}, []);
+  
 
   // define a function that will return the JSX needed once we get the data
   const loaded = () => {
-    return gear.map((gear) => (
+    return gears.map((gear) => (
       <div key={gear._id} className= "gear">
         <h1>{gear.name}</h1>
         <img src={gear.image} alt=""/>
@@ -27,7 +29,7 @@ const Gear = (props) => {
     ));
   };
 
-  return gear ? loaded() : <h1>Loading...</h1>;
+  return gears ? loaded() : <h1>Loading...</h1>;
 }
 
-export default Gear;
+export default Gears;
