@@ -1,37 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 
-function People(props) {
+function Book(props) {
+
+  const [book, setBook] = useState([]);
+
+    const getBookData = async () => {
+        const response = await fetch(props.URL + "book");
+        // console.log(response)
+        const data = await response.json();
+        // console.log(data)
+        setBook(data);
+    };
+
+    const createBook = async (book) => {
+        await fetch(props.URL + "book", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        body: JSON.stringify(book),
+        });
+        getBookData();
+    };
+
+    useEffect(() => getBookData(), []);
     // state to hold formData
-    const [newForm, setNewForm] = useState({
+    const [newBook, setNewBook] = useState({
         name: "",
-        image: "",
-        title: "",
+        date: "",
+        Email: "",
     });
 
     // handleChange function for form
     const handleChange = (event) => {
-        setNewForm({ ...newForm, [event.target.name]: event.target.value });
+        setNewBook({ ...newBook, [event.target.name]: event.target.value });
     };
 
     // handle submit function for form
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.createPeople(newForm);
-        setNewForm({
+        createBook(newBook);
+        setNewBook({
             name: "",
-            image: "",
-            title: "",
+            date: "",
+            Email: "",
         });
     };
 
     // loaded function
     const loaded = () => {
-        return props.people.map((person) => (
-            <div key={person._id} className="person">
-                <Link to={`/people/${person._id}`}><h1>{person.name}</h1></Link>
-                <img src={person.image} alt={person.name} />
-                <h3>{person.title}</h3>
+        return book.map((book) => (
+            <div key={book._id} className="book">
+                <Link to={`/book/${book._id}`}><h1>{book.name}</h1></Link>  
+                <h3>{book.date} </h3>
+                <h3>{book.Email}</h3>
             </div>
         ));
     };
@@ -44,30 +67,30 @@ function People(props) {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    value={newForm.name}
+                    value={newBook.name}
                     name="name"
                     placeholder="name"
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    value={newForm.image}
-                    name="image"
-                    placeholder="image URL"
+                    value={newBook.date}
+                    name="date"
+                    placeholder="06/25/1969"
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    value={newForm.title}
-                    name="title"
-                    placeholder="title"
+                    value={newBook.Email}
+                    name="Email"
+                    placeholder="TomPee@Gmail.com"
                     onChange={handleChange}
                 />
-                <input type="submit" value="Create Person" />
+                <input type="submit" value="Book Studio" />
             </form>
-            {props.people ? loaded() : loading()}
+            {book ? loaded() : loading()}
         </section>
     );
 }
 
-export default People;
+export default Book;
