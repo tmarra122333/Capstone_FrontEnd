@@ -22,9 +22,9 @@ const Gears = (props) => {
     return gears.map((gear) => (
       <div key={gear._id} className= "gear">
         <h1>{gear.name}</h1>
-        <img src={gear.image} alt=""/>
-        <h3>{gear.description}</h3>
-        <h4>{gear.manufacturer}</h4>
+        <h3>{gear.manufacturer}</h3>
+        <img style={{ width:"600px", height:"500px", border:"solid #e03499 5px",}} img src={gear.image} alt=""/>
+        <h5 style={{textAlign: "center", padding: "100px", color: "white", font: "Sans-Serif", border: ""}}>{gear.description}</h5>
       </div>
     ));
   };

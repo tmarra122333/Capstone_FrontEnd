@@ -23,7 +23,7 @@ const Artists = (props) => {
     return artists.map((artist) => (
       <div key={artist._id} className= "artist">
         <h1>{artist.name}</h1>
-        <img style={{ width:"350px", height:"350px", borderRadius:"80px"}} img src={artist.image} alt=""/> 
+        <img style={{ width:"350px", height:"350px", borderRadius:"80px", border: "solid #e03499 5px"}} img src={artist.image} alt=""/> 
         <h3>{artist.description}</h3>
         <h4>{artist.genre}</h4>
       </div>
