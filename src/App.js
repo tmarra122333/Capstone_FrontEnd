@@ -15,7 +15,7 @@ import ShowBook from "./pages/ShowBook";
 
 function App() {
   // URL should have YOUR HEROKU URL for your backend, make sure you include the trailing slash
-  const URL = "http://localhost:4000/";
+  const URL = "https://capstonecosmic.herokuapp.com/";
 
   return (
     <div className="App">
