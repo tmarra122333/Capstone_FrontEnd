@@ -24,6 +24,9 @@ function Book(props) {
         getBookData();
     };
 
+
+    
+
     useEffect(() => getBookData(), []);
     // state to hold formData
     const [newBook, setNewBook] = useState({
@@ -37,7 +40,7 @@ function Book(props) {
         setNewBook({ ...newBook, [event.target.name]: event.target.value });
     };
 
-    // handle submit function for form
+    // handle submit function for Create book
     const handleSubmit = (event) => {
         event.preventDefault();
         createBook(newBook);
@@ -47,6 +50,7 @@ function Book(props) {
             Email: "",
         });
     };
+
 
     // loaded function
     const loaded = () => {
@@ -76,14 +80,14 @@ function Book(props) {
                     type="text"
                     value={newBook.date}
                     name="date"
-                    placeholder="06/25/1969"
+                    placeholder="MM/DD/YEAR"
                     onChange={handleChange}
                 />
                 <input
                     type="text"
                     value={newBook.Email}
                     name="Email"
-                    placeholder="TomPee@Gmail.com"
+                    placeholder="TomSmith@gmail.com"
                     onChange={handleChange}
                 />
                 <input type="submit" value="Book Studio" />

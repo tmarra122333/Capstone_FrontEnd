@@ -11,6 +11,7 @@ import  Gear  from "./pages/Gear";
 import  Book  from "./pages/Book";
 import  Artists from "./pages/Artists";
 import NavBar from "./components/NavBar";
+import ShowBook from "./pages/ShowBook";
 
 function App() {
   // URL should have YOUR HEROKU URL for your backend, make sure you include the trailing slash
@@ -25,6 +26,7 @@ function App() {
         <Route path="/about" element={<About URL={URL} />} />
         <Route path="/artists" element={<Artists URL={URL} />} />
         <Route path="/book" element={<Book URL={URL} />} />
+        <Route path="/book/:id" element={<ShowBook URL={URL} />} />
       </Routes>
       <Footer />
     </div>
