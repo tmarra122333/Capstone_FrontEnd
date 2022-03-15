@@ -73,7 +73,7 @@ function Book(props) {
                     type="text"
                     value={newBook.name}
                     name="name"
-                    placeholder="name"
+                    placeholder="Name"
                     onChange={handleChange}
                 />
                 <input

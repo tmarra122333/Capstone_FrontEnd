@@ -17,12 +17,14 @@ function Footsies(props) {
         <footer>
             <h1></h1>
             <nav style={navStyle}>
-                <Link to="espn.com">
+                <Link to="https://www.espn.com">
                     <div>Contact cosmictitanofficial@gmail.com</div>
                 </Link>
             </nav>
         </footer>
     );
 }
+
+
 
 export default Footsies;

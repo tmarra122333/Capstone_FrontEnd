@@ -19,3 +19,16 @@ code {
   font-weight:bolder;
   /* border: solid #e03499 5px; */
 }
+
+h1 {
+  text-decoration: none;
+  color: white;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight:bolder;
+  
+  /* border: solid #e03499 5px; */
+}
+
+a {
+  text-decoration: none;
+}
