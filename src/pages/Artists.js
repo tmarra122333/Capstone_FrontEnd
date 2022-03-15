@@ -6,9 +6,9 @@ const Artists = (props) => {
   // create state to hold projects
   const [artists, setArtists] = useState([]);
 
-  // const URL = "http://localhost:4000/";
+  const URL = "http://localhost:4000/";
   const getArtistsData = async () => {
-    const response = await fetch(URL + "artist");
+    const response = await fetch(props.URL + "artist");
     console.log(response)
     const data = await response.json();
     setArtists(data);

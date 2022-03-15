@@ -5,9 +5,10 @@ const Gears = (props) => {
   // create state to hold projects
   const [gears, setGears] = useState([]);
 
-  // const URL = "http://localhost:4000/";
+  const URL = "http://localhost:4000/";
+  
   const getGearsData = async () => {
-    const response = await fetch(URL + "gear");
+    const response = await fetch(props.URL + "gear");
     console.log(response)
     const data = await response.json();
     setGears(data);
