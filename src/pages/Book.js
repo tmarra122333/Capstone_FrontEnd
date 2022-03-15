@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import React from "react";
+import { InlineWidget } from "react-calendly";
 
 function Book(props) {
 
@@ -91,10 +93,16 @@ function Book(props) {
                     onChange={handleChange}
                 />
                 <input type="submit" value="Book Studio" />
+                <InlineWidget url="https://calendly.com/tmarra122333/book-studio-time" />
             </form>
             {book ? loaded() : loading()}
         </section>
+        
+        
     );
+    
 }
-
+<div className="Book">
+      <InlineWidget url="https://calendly.com/tmarra122333/book-studio-time" />
+</div>
 export default Book;

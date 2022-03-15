@@ -10,7 +10,7 @@ function Show(props) {
 
     const updateBook = async (book, id) => {
         // make put request to create people
-        await fetch(props.URL + "book/" + id, {
+        await fetch(props.URL + "book/" + id, {           //The id needs to be outside of the string or its all read as 1 link. 
             method: "put",
             headers: {
                 "Content-Type": "application/json",
@@ -92,7 +92,7 @@ function Show(props) {
                 <button id="delete" onClick={removeBook}>
                     DELETE
                 </button>
-
+               
 
             </div>
         )
