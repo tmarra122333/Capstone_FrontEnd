@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 const Gears = (props) => {
   // create state to hold projects
   const [gears, setGears] = useState([]);
-
-  const URL = "https://capstonecosmic.herokuapp.com/";
   
   const getGearsData = async () => {
     const response = await fetch(props.URL + "gear");

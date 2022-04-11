@@ -6,7 +6,6 @@ const Artists = (props) => {
   // create state to hold projects
   const [artists, setArtists] = useState([]);
 
-  const URL = "https://capstonecosmic.herokuapp.com/";
   const getArtistsData = async () => {
     const response = await fetch(props.URL + "artist");
     console.log(response)
